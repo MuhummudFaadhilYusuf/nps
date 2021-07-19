@@ -9,3 +9,17 @@
 #
 # two: {}
 # column: value
+
+regular:
+  first_name: Muhummud
+  last_name: Yusuf
+  email: muhummud@webhi.co
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password')%>
+  admin: false
+
+admin:
+  first_name: Admin
+  last_name: User
+  email: admin@webhi.co
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password')%>
+  admin: true
