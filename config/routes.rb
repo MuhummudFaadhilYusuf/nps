@@ -1,12 +1,29 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :ratings
+  resources :people
+  resources :projects
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
 authenticate :user, lambda { |u| u.admin? } do
   mount Sidekiq::Web => '/sidekiq'
 
   namespace :madmin do
+    namespace :active_storage do
+      resources :blobs
+    end
+    resources :announcements
+    resources :users
+    namespace :active_storage do
+      resources :attachments
+    end
+    resources :services
+    namespace :active_storage do
+      resources :variant_records
+    end
+    resources :notifications
+    root to: "dashboard#show"
   end
 end
 
