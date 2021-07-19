@@ -10,6 +10,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     sign_out :user
     get projects_url
     assert_response :redirect
+    follow_redirect!
+    assert_select "h1", "Log in"
   end
 
   test "should get index" do
@@ -30,6 +32,12 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to project_url(Project.last)
   end
 
+  test "cannot create a project with invalid attributes" do
+    assert_no_difference('Project.count') do
+      post projects_url, params: { project: { title: "" } }
+    end
+  end
+
   test "should show project" do
     get project_url(@project)
     assert_response :success
@@ -41,8 +49,16 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update project" do
-    patch project_url(@project), params: { project: { title: @project.title } }
+    patch project_url(@project), params: { project: { title: "Updated project" } }
     assert_redirected_to project_url(@project)
+    @project.reload
+    assert_equal "Updated project", @project.title
+  end
+
+  test "cannot update project with invalid attributes" do
+    patch project_url(@project), params: { project: { title: "" } }
+    assert_response :unprocessable_entity
+    assert_select "h1", "Edit Project"
   end
 
   test "should destroy project" do
