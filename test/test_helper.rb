@@ -12,4 +12,9 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   include Devise::Test::IntegrationHelpers
+
+  VCR.configure do |config|
+    config.cassette_library_dir = 'test/vcr_cassette'
+    config.hook_into :webmock
+  end
 end
