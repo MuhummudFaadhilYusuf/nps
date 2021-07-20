@@ -1,6 +1,7 @@
 require "test_helper"
 
 class RatingTest < ActiveSupport::TestCase
+  include ActiveJob::TestHelper
   # test "the truth" do
   #   assert true
   # end
@@ -88,7 +89,11 @@ class RatingTest < ActiveSupport::TestCase
   # update person score test
   test "update person score cache when created" do
     person = people(:one)
-    person.ratings.create(score: 9)
-    assert_equal 9, person.score
+    assert_enqueued_with(job: UpdatePersonJob, args: [person.id, 9]) do
+      person.ratings.create(score: 9)
+    end
+    perform_enqueued_jobs
+    assert_equal 9, person.reload.score
+    assert_performed_jobs 1
   end
 end
