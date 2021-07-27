@@ -11,7 +11,7 @@ class PersonMailerTest < ActionMailer::TestCase
 
      assert_equal [person.email], email.to
      assert_equal ['from@example.com'], email.from
-     assert_equal "Hello", email.subject
+     assert_equal I18n.t("person_mailer.nps.subject"), email.subject
 
      assert_match "How likely", email.body.encoded
      
@@ -19,7 +19,7 @@ class PersonMailerTest < ActionMailer::TestCase
        assert_match "score=#{i}", email.body.encoded
      end
 
-      byebug
+      # byebug
       ActionMailer::Base.deliveries
   end
 end

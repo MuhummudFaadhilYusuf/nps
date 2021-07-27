@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  person_mailer:
+    nps:
+      subject: "Do you have 60 seconds for a quick question?"
