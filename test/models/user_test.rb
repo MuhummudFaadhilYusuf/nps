@@ -1,4 +1,5 @@
 require "test_helper"
+require 'minitest/mock'
 
 class UserTest < ActiveSupport::TestCase
   # test "the truth" do
@@ -41,4 +42,18 @@ class UserTest < ActiveSupport::TestCase
   #   travel_to(VCR.current_cassette.originally_recorded_at || Time.current) do
   #   end
   # end
+
+  test "geocode" do
+    user = users(:regular)
+
+    mock = Minitest::Mock.new
+    mock.expect :geocode, [1, -1], [user.address]
+
+    user.geocode(service: mock)
+
+    assert_equal 1, user.latitude
+    assert_equal -1, user.longitude
+
+    assert_mock mock
+  end
 end

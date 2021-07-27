@@ -16,6 +16,7 @@ regular:
   email: muhummud@webhi.co
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password')%>
   admin: false
+  address: 1600 Pennsylvania Ave NW, Washington, DC 20500
 
 admin:
   first_name: Admin

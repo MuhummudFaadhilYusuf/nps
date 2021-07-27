@@ -17,4 +17,13 @@ class User < ApplicationRecord
   def on_trial?
     Time.current < trial_ends_at
   end
+
+  def geocode(service: GoogleMapsAPI)
+    lat, lng = service.geocode(address)
+
+    update(
+      latitude: lat,
+      longitude: lng,
+    )
+  end
 end
