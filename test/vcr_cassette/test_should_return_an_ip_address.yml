@@ -23,11 +23,11 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Tue, 20 Jul 2021 21:08:07 GMT
+      - Tue, 27 Jul 2021 10:45:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '25'
+      - '24'
       Connection:
       - keep-alive
       Strict-Transport-Security:
@@ -38,8 +38,8 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"ip":"192.248.150.126"}
+      string: '{"ip":"197.231.151.99"}
 
         '
-  recorded_at: Tue, 20 Jul 2021 21:08:06 GMT
+  recorded_at: Tue, 27 Jul 2021 10:45:52 GMT
 recorded_with: VCR 6.0.0

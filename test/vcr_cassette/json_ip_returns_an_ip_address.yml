@@ -38,7 +38,7 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"ip":"192.248.150.126"}
+      string: '{"ip":"197.231.151.99"}
 
         '
   recorded_at: Tue, 20 Jul 2021 21:03:29 GMT
