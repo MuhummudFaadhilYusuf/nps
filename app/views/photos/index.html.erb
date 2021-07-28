@@ -18,7 +18,7 @@
     <thead>
       <tr>
     
-
+            <th>Title</th>
             <th>Image</th>
             
           <th></th>
@@ -30,7 +30,7 @@
       <% @photos.each do |photo| %>
         <%= content_tag :tr, id: dom_id(photo), class: dom_class(photo) do %>
           
-
+                      <td><%= photo.title %></td>
                       <td><%= photo.image.filename.to_s %></td>
           
           
