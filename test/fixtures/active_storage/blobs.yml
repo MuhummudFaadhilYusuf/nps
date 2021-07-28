@@ -1,0 +1,7 @@
+jpeg:
+  key: '12345'
+  filename: 'leftbrain-rightbrain.jpeg'
+  content_type: 'image/jpeg'
+  service_name: 'local'
+  byte_size: 147301
+  checksum: "UVXL1Dhk2oYLgyF0EuQ9jA=="
